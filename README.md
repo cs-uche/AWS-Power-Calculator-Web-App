@@ -39,3 +39,17 @@ The Power Calculator Web App is an end-to-end web application created and hosted
    - Manages Identity and Access Management, granting the necessary permissions for Lambda to interact with DynamoDB securely.
 
 ## Demo
+<div>
+    <a href="https://www.loom.com/share/803e95f0dca04fefa434f04f29c0963c">
+      <p>Power Calculator App Demo - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/803e95f0dca04fefa434f04f29c0963c">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/803e95f0dca04fefa434f04f29c0963c-with-play.gif">
+    </a>
+</div>
+
+![Application Image](./imgs/PowerCalculatorApplication.png)
+![DynamoDB Table Image](./imgs/PowerCalculatorDynamoDBTable.png)
+
+
+
