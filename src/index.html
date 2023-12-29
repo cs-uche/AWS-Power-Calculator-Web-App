@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Power Calculator</title>
+    <!-- Styling for the client UI -->
+    <style>
+        h1 {
+            color: #07034d;
+            text-align: center;
+            font-family: system-ui;
+            font-size: 40px;
+        }
+        body {
+            background-color: #F2F2F2;
+            font-family: system-ui;
+        }
+        form {
+            text-align: center;
+        }
+        label {
+            color: #333333;
+            font-size: 23px;
+            margin-left: 10px;
+        }
+        button {
+            background-color: #3366CC;
+            border-color: #144fc5;
+            border-width: medium;
+            color: #FFFFFF;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 30px;
+            width: 200px;
+        }
+        input {
+            color: #222629;
+            font-size: 20px;
+            margin-left: 10px;
+            margin-top: 20px;
+            width: 100px;
+        }
+		#result {
+            font-size: 30px;
+            margin-top: 25px;
+            color: #333333;
+        }
+    </style>
+    <script>
+        /**
+         * Function to make an asynchronous API call to calculate power.
+         * @param {number} base - The base number.
+         * @param {number} exponent - The exponent.
+         */
+		function callAPI(base, exponent) {
+			// Create headers for the API request
+            var headers = new Headers();
+            headers.append("Content-Type", "application/json");
+            
+			// Prepare the payload (body) for the API request
+            var payload = JSON.stringify({"base":base,"exponent":exponent});
+            
+			// Create request options for the API call
+			var requestOptions = {
+                method: 'POST',
+                headers: headers,
+                body: payload,
+                redirect: 'follow'
+            };
+
+            // Asynchronous API call using Fetch
+            fetch("INSERT YOUR API GATEWAY ENDPOINT", requestOptions)
+                .then(response => response.text())
+                .then(result => {
+					// alert(JSON.parse(result).body)
+					document.getElementById('result').textContent = JSON.parse(result).body;
+				})
+                .catch(error => console.log('error', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Power Calculator!</h1>
+	<form>
+        <label for="base">Base number:</label>
+        <input type="text" id="base">
+        <label for="exponent">to the power of:</label>
+        <input type="text" id="exponent">
+        <br>
+        
+        <!-- Button to calculate the result -->
+        <button type="button" onclick="callAPI(document.getElementById('base').value,document.getElementById('exponent').value)">CALCULATE</button>
+		
+		<!-- Display the result -->
+        <div id="result"></div>
+	</form>
+</body>
+</html>
